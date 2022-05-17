@@ -1,54 +1,29 @@
-AWSTemplateFormatVersion: '2010-09-09'
-Transform: AWS::Serverless-2016-10-31
-Description: >
-  sam-app
+name: Front End Demo
+on: 
+  push:
+    branches:
+      - master
 
-  Sample SAM Template for sam-app
+jobs:
+  update-s3:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v3
+        with:
+          python-version: '3.9' # Version range or exact version of a Python version to use, using SemVer's version range syntax
+          architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
+      - uses: aws-actions/setup-sam@v2
+      - uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+      # sam build 
+      - name: Deploy static site to S3 bucket
+        run: aws s3 sync ./public/ s3://esteban-ortiz.com --delete
 
-# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
-Globals:
-  Function:
-    Timeout: 3
+# Run Unit tests- Specify unit tests here 
 
-Resources:
-  VisitorCountFunction:
-    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
-    Properties:
-      CodeUri: visitor_count/
-      Handler: app.lambda_handler
-      Runtime: python3.9
-      Role: 'arn:aws:iam::794204097935:role/service-role/serverless-api-role'
-      Events:
-        Api1:
-          Type: Api
-          Properties:
-            Path: /visit
-            Method: PATCH
-        Api2:
-          Type: Api
-          Properties:
-            Path: /visit
-            Method: GET
-        Api3:
-          Type: Api
-          Properties:
-            Path: /health
-            Method: GET
-  
-  VisitorCountDB:
-    Type: AWS::DynamoDB::Table
-    Properties:
-      TableName: visitor-count
-      AttributeDefinitions:
-        - AttributeName: appname
-          AttributeType: S
-      KeySchema:
-        - AttributeName: appname
-          KeyType: HASH
-      ProvisionedThroughput:
-        ReadCapacityUnits: 1
-        WriteCapacityUnits: 1
-Outputs:
-  VisitorCountApi:
-    Description: "API Gateway endpoint URL for Prod stage for Hello World function"
-    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/visita/"
+# sam deploy
+     
