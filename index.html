@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Resume</title>
+    <script>
+      const ul = document.getElementById("loadcount");
+      const url ="https://47ryan8c48.execute-api.us-east-1.amazonaws.com/prod/visit";
+      fetch(url, { method: "PATCH" }) //calls API with PATCH method
+        .then((patchresponse) => patchresponse.json()) //converts API response to JSON
+        .then ((response)=>{
+          const visitorcount = document.getElementById("viscount");
+          visitorcount.innerHTML = response["newcount"]
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+    </script>
+  </head>
+  <body>
+    <div id="page-container">
+      <div id="left-container">
+        <div id="left-container-image">
+          <img
+            id="profile-img"
+            src="/images/Profilepicture.png"
+            alt=""
+          />
+        </div>
+        <div id="left-container-text">
+          <h2>Esteban Ortiz</h2>
+          <h3>AWS | Docker | IT | Terraform</h3>
+          <p>
+            An IT specialist and problem solver with a background in biology. A
+            strong senior consultant who creates solutions that integrate best
+            practices and drive continuous improvement. Passions include food,
+            movies, tv, and gaming.
+          </p>
+          <hr />
+          <h3>Skills</h3>
+          <div id="skills">
+            <p class="skillsitem">Python</p>
+            <p class="skillsitem">Office Suite</p>
+            <p class="skillsitem">Windows 10</p>
+            <p class="skillsitem">Powershell</p>
+            <p class="skillsitem">Active Directory</p>
+            <p class="skillsitem">macOS</p>
+            <p class="skillsitem">ServiceNow</p>
+            <p class="skillsitem">Javascript</p>
+            <p class="skillsitem">HTML</p>
+            <p class="skillsitem">CSS</p>
+            
+          </div>
+          <hr />
+          <h3>Certifications</h3>
+          <a href="https://www.credly.com/badges/aa841ec3-df3c-46af-91f0-de483f0976de/public_url"><img class="cert-image" src="/images/AWSCCP.png" alt=""></a>
+          <a href="https://www.credly.com/badges/7a39e545-af8f-4a87-869e-a3c4475c9db6/public_url"><img class="cert-image" src="/images/CISCOCCNA.png" alt=""></a>
+          <a href="https://www.axelos.com/certifications/itil-service-management/itil-4-foundation"><img class="cert-image" src="/images/ITIL4Foundation.png" alt=""></a>
+        </div>
+        <p>Visitor Count: <a id="viscount"></a></p>
+        <p></p>
+      </div>
+
+      <div id="right-container">
+        <div class="shadowbox">
+          <h3 class="resume-section">WORK EXPERIENCE</h3>
+          <div class="jobrole">
+            <p class="jobtitle">
+              <span class="makebold">Operations Technician</span>
+              <span class="floatright">Aug. 2021 - Apr. 2022</span>
+            </p>
+            <p class="jobtitle">
+              Blue Streak Partners, LLP in support of EY, LLP |
+              <span class="ital">New York, NY</span>
+            </p>
+            <ul class="jobbullets">
+              <li>
+                Consult daily with clients on leading practices for optimal
+                end-user computing configurations.
+              </li>
+              <li>
+                Followed ITIL incident management flow by identifying issues as
+                they arose, logging, and then executing/escalating – to achieve
+                a ticket closure rate 181% higher than the team average.
+              </li>
+              <li>
+                Implemented a QR code scannable form for self-checkout of
+                in-office items.
+              </li>
+              <li>
+                Developed clean ServiceNow queues for headquarters/satellite
+                offices by prioritizing tickets per time SLAs.
+              </li>
+              <li>
+                Handled support tickets for 1600+ employee environment in a
+                heavy-traffic headquarters office.
+              </li>
+            </ul>
+          </div>
+          <div class="jobrole">
+            <p class="jobtitle">
+              <span class="makebold">Desktop Support Engineer</span>
+              <span class="floatright"> Nov. 2019 - Jun. 2021</span>
+            </p>
+            <p class="jobtitle">IBM | <span class="ital">New York, NY</span></p>
+            <ul class="jobbullets">
+              <li>
+                Conferred with clients on varying needs such as upcoming new
+                hires, equipment upgrades, and VIP support.
+              </li>
+              <li>
+                Automated Active Directory inquiries using PowerShell scripts
+                for repeat inquiries, in addition to streamlining duties
+                associated with account unlocking and security group policy
+                assignment.
+              </li>
+              <li>
+                Enrolled new client after information gathering and processes in
+                a ‘breadcrumb fact-finding mission’, as well as curated a
+                knowledge base for the rest of the support team.
+              </li>
+            </ul>
+          </div>
+          <div class="jobrole">
+            <p class="jobtitle">
+              <span class="makebold">Desktop Support Technician</span>
+              <span class="floatright">Mar. 2019 - Nov. 2019</span>
+            </p>
+            <p class="jobtitle">
+              Hemmersbach, US LLC | <span class="ital">New York, NY</span>
+            </p>
+            <ul class="jobbullets">
+              <li>
+                Promoted to co-lead an 8 person team, new responsibilities
+                included balancing workload across technicians and task
+                prioritization.
+              </li>
+              <li>
+                Authored a knowledge repository for the team use including
+                troubleshooting steps, knowledge articles, upcoming system
+                changes, and key people in client companies.
+              </li>
+              <li>Troubleshot basic network connectivity issues.</li>
+            </ul>
+          </div>
+          <div class="jobrole">
+            <p class="jobtitle">
+              <span class="makebold">Desktop Support Technician</span>
+              <span class="floatright">Aug. 2018 - Mar. 2019</span>
+            </p>
+            <p class="jobtitle">
+              Robert Half Staff Agency | <span class="ital">New York, NY</span>
+            </p>
+            <ul class="jobbullets">
+              <li>
+                Imaged, configured, and deployed Windows 10 and macOS setups for
+                executive, creative, and finance users.
+              </li>
+            </ul>
+          </div>
+          <h3 class="resume-section">EDUCATION</h3>
+          <ul class="cleanlist">
+            <li>
+              <span class="makebold">AWS Cloud Practicioner</span> | AWS
+              <span class="floatright">2022</span>
+            </li>
+            <li>
+              <span class="makebold">ITIL 4 Foundation</span> | Axelos
+              <span class="floatright">2021</span>
+            </li>
+            <li>
+              <span class="makebold">Cisco Certified Network Associate</span>
+              | Cisco Systems <span class="floatright">2019</span>
+            </li>
+            <li>
+              <span class="makebold">Bachelors of Sceience, Biology</span> |
+              Stony Brook University <span class="floatright">2017</span>
+            </li>
+          </ul>
+        </div>
+        <div class="shadowbox">
+          <h3 class="resume-section">PROJECTS</h3>
+          <p class="jobtitle makebold">Cloud Resume Challenge</p>
+          <p class="jobtitle">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+            Repellendus neque laudantium veritatis exercitationem, saepe
+            possimus, atque itaque tempore nobis voluptas aliquam! Quaerat
+            perspiciatis hic autem molestias temporibus. Veniam, excepturi est?
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
