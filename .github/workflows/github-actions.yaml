@@ -1,4 +1,4 @@
-name: Front End Demo
+name: Sync Front End
 on: 
   push:
     branches:
