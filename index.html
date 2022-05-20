@@ -8,7 +8,7 @@
     <title>Resume</title>
     <script>
       const ul = document.getElementById("loadcount");
-      const url ="https://api.esteban-ortiz.com/visit";
+      const url ="https://mz4r1agm7k.execute-api.us-east-1.amazonaws.com/prod/visit";
       fetch(url, { method: "PATCH" }) //calls API with PATCH method
         .then((patchresponse) => patchresponse.json()) //converts API response to JSON    
         .then ((response)=>{
