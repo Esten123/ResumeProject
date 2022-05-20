@@ -9,9 +9,7 @@
     <script>
       const ul = document.getElementById("loadcount");
       const url ="https://api.esteban-ortiz.com/visit";
-      fetch(url, { 
-        method: "PATCH",
-        mode: "cors" }) //calls API with PATCH method
+      fetch(url, { method: "PATCH" }) //calls API with PATCH method
         .then((patchresponse) => patchresponse.json()) //converts API response to JSON    
         .then ((response)=>{
           const visitorcount = document.getElementById("viscount");
